@@ -75,3 +75,4 @@ profile-*
 package-lock.json
 yarn.lock
 .ruff_cache
+__pycache__
