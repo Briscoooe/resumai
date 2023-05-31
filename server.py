@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi.responses import StreamingResponse
 from starlette.middleware.cors import CORSMiddleware
 
@@ -22,31 +22,56 @@ app.add_middleware(
 )
 
 
-@app.get("/resume", response_model=Resume)
+@app.get("/resume", response_model=Resume, summary="Get my resume")
 def get_my_resume():
     return my_resume
 
 
-@app.get("/resume/experience", response_model=list[Experience])
+@app.get(
+    "/resume/experience", response_model=list[Experience], summary="Get my experience"
+)
 def get_my_experience():
     return my_resume.experience
 
 
-@app.get("/resume/education", response_model=list[Education])
+@app.get(
+    "/resume/education", response_model=list[Education], summary="Get my education"
+)
 def get_my_education():
     return my_resume.education
 
 
-@app.get("/resume/open-source", response_model=list[OpenSourceContribution])
+@app.get(
+    "/resume/open-source",
+    response_model=list[OpenSourceContribution],
+    summary="Get my open source contributions",
+)
 def get_my_open_source():
     return my_resume.open_source_contributions
 
 
-@app.get("/resume/technologies", response_model=list[RecentTechnologyCategory])
+@app.get(
+    "/resume/technologies",
+    response_model=list[RecentTechnologyCategory],
+    summary="Get my recent technologies",
+)
 def get_my_technologies():
     return my_resume.recent_technology_categories
 
 
-@app.get("/chat")
-def stream(query: str):
+@app.get("/chat", summary="Chat about my resume with a magic AI bot")
+def chat(
+    query: str = Query(
+        default="Summarise Brian",
+        description="Your message to the bot",
+        example="What university did Brian go to?",
+        min_length=5,
+    ),
+    persona: str = Query(
+        default="normal",
+        description="The persona of the bot",
+        example="normal",
+        regex="^(normal|professional|friendly)$",
+    ),
+):
     return StreamingResponse(send_message(query), media_type="text/event-stream")
