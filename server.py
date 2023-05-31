@@ -61,26 +61,26 @@ def get_my_technologies():
 
 @app.get("/chat", summary="Chat about my resume with a magic AI bot")
 def chat(
-    query: str = Query(
+    message: str = Query(
         default="Summarise Brian",
         description="Your message to the bot",
         example="What university did Brian go to?",
         min_length=5,
     ),
-    # persona: str = Query(
-    #     default="normal",
-    #     description="The persona of the bot",
-    #     example="normal",
-    #     regex="^(normal|friendly|poet|rapper)$",
-    # ),
-    # language: str = Query(
-    #     default="en",
-    #     description="The language of the bot",
-    #     example="en",
-    #     regex="^(en|fr|es|de|it|pt)$",
-    # ),
+    persona: str = Query(
+        default="normal",
+        description="The persona of the bot",
+        example="normal",
+        regex="^(normal|friendly|poet|rapper)$",
+    ),
+    language: str = Query(
+        default="en",
+        description="The language of the bot",
+        example="en",
+        regex="^(en|fr|es|de|it|pt)$",
+    ),
 ):
     return StreamingResponse(
-        send_message(message=query, persona="normal", language="en"),
+        send_message(message=message, persona=persona, language=language),
         media_type="text/event-stream",
     )
