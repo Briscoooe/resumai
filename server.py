@@ -71,7 +71,16 @@ def chat(
         default="normal",
         description="The persona of the bot",
         example="normal",
-        regex="^(normal|professional|friendly)$",
+        regex="^(normal|friendly|poet|rapper)$",
+    ),
+    language: str = Query(
+        default="en",
+        description="The language of the bot",
+        example="en",
+        regex="^(en|fr|es|de|it|pt)$",
     ),
 ):
-    return StreamingResponse(send_message(query), media_type="text/event-stream")
+    return StreamingResponse(
+        send_message(message=query, persona=persona, language=language),
+        media_type="text/event-stream",
+    )

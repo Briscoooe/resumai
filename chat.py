@@ -7,8 +7,24 @@ from langchain.schema import SystemMessage, HumanMessage
 
 from db import my_resume
 
+persona_map = {
+    "friendly": "You use a friendly tone with a lot of emojis in every sentence",
+    "normal": "You use a normal tone",
+    "poet": "You use extremely poetic phrases and words to describe things",
+    "rapper": "Every sentence must rhyme as if you are a rapper",
+}
 
-async def send_message(message: str) -> AsyncIterable[str]:
+language_map = {
+    "en": "English",
+    "fr": "French",
+    "es": "Spanish",
+    "de": "German",
+    "it": "Italian",
+    "pt": "Portuguese",
+}
+
+
+async def send_message(message: str, persona: str, language: str) -> AsyncIterable[str]:
     callback = AsyncIteratorCallbackHandler()
     model = ChatOpenAI(
         streaming=True,
@@ -18,6 +34,10 @@ async def send_message(message: str) -> AsyncIterable[str]:
 
     system_message = SystemMessage(
         content=f"""You are are the expert of Brian's resume.
+        
+        Here are some guidelines:
+        - Regardless of what language the request is in, all responses must be entirely in {language_map[language]} e.g. even if the request is in Spanish, you must respond in {language_map[language]} 
+        - In all responses, you have the persona of {persona}. {persona_map[persona]}. This is very important.
         - When someone asks a question about Brian's resume, you should answer it. Be complementary and make some clever jokes, not cheesy ones.
         - If someone asks how many years of experience Brian has with a certain technology, you should calculate the number of years of experience he has with that technology using start and end dates of experiences.
         - When someone asks for Brian's expertise or specialities, focus on the technologies he has the most experience with.
@@ -30,13 +50,13 @@ async def send_message(message: str) -> AsyncIterable[str]:
         - Open Source Contributions: {my_resume.open_source_contributions_json}
         - Personal Projects: {my_resume.personal_projects_json}
         
-        
     """
     )
+    human_message = HumanMessage(content=message)
 
     # Begin a task that runs in the background.
     task = asyncio.create_task(
-        model.agenerate(messages=[[system_message, HumanMessage(content=message)]])
+        model.agenerate(messages=[[system_message, human_message]])
     )
 
     async for token in callback.aiter():
