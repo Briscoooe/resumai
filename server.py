@@ -67,20 +67,20 @@ def chat(
         example="What university did Brian go to?",
         min_length=5,
     ),
-    persona: str = Query(
-        default="normal",
-        description="The persona of the bot",
-        example="normal",
-        regex="^(normal|friendly|poet|rapper)$",
-    ),
-    language: str = Query(
-        default="en",
-        description="The language of the bot",
-        example="en",
-        regex="^(en|fr|es|de|it|pt)$",
-    ),
+    # persona: str = Query(
+    #     default="normal",
+    #     description="The persona of the bot",
+    #     example="normal",
+    #     regex="^(normal|friendly|poet|rapper)$",
+    # ),
+    # language: str = Query(
+    #     default="en",
+    #     description="The language of the bot",
+    #     example="en",
+    #     regex="^(en|fr|es|de|it|pt)$",
+    # ),
 ):
     return StreamingResponse(
-        send_message(message=query, persona=persona, language=language),
+        send_message(message=query, persona="normal", language="en"),
         media_type="text/event-stream",
     )
