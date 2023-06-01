@@ -65,7 +65,6 @@ def chat(
         default="Summarise Brian",
         description="Your message to the bot",
         example="What university did Brian go to?",
-        min_length=5,
     ),
     persona: str = Query(
         default="normal",
