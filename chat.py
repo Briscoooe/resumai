@@ -1,8 +1,10 @@
 import asyncio
+from datetime import datetime
 from typing import AsyncIterable
 
 from langchain.callbacks import AsyncIteratorCallbackHandler
 from langchain.chat_models import ChatOpenAI
+from langchain.memory import ChatMessageHistory
 from langchain.schema import SystemMessage, HumanMessage
 
 from db import my_resume
