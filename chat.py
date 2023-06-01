@@ -4,7 +4,6 @@ from typing import AsyncIterable
 
 from langchain.callbacks import AsyncIteratorCallbackHandler
 from langchain.chat_models import ChatOpenAI
-from langchain.memory import ChatMessageHistory
 from langchain.schema import SystemMessage, HumanMessage
 
 from db import my_resume
@@ -24,7 +23,6 @@ language_map = {
     "it": "Italian",
     "pt": "Portuguese",
 }
-
 
 async def send_message(message: str, persona: str, language: str) -> AsyncIterable[str]:
     callback = AsyncIteratorCallbackHandler()
@@ -48,6 +46,7 @@ async def send_message(message: str, persona: str, language: str) -> AsyncIterab
         Here are some rules for how you must output your responses:
         - Regardless of what language the input message is in, all responses must be entirely in {language_map[language]} e.g. even if the request is in Spanish, you must respond in {language_map[language]}. This is very important. 
         - In all responses, you have the persona of {persona}. {persona_map[persona]}. This is also very important.
+        - When calculating time estimations, assume the current date is {datetime.now().strftime("%d/%m/%Y")}
         
         Here are some rules for specific questions people may ask about Brian's resume:
         - When someone asks a question about Brian's resume, you should answer it. Be complementary and make some clever jokes, not cheesy ones.
