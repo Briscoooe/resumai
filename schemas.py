@@ -43,7 +43,6 @@ class Resume(BaseModel):
     name: str
     github: str
     linkedin: str
-    email: str
     experience: list[Experience]
     education: list[Education]
     recent_technology_categories: list[RecentTechnologyCategory]

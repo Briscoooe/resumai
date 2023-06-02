@@ -243,7 +243,6 @@ my_resume = Resume(
     education=my_educations,
     github="https://github.com/briscoooe",
     linkedin="https://www.linkedin.com/in/brianbriscoe1/",
-    email="brianbriscoe06@gmail.com",
     recent_technology_categories=recent_technology_categories,
     personal_projects=my_personal_projects,
     open_source_contributions=my_open_source_contributions,
