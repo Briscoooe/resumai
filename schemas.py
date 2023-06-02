@@ -12,6 +12,7 @@ class Experience(BaseModel):
     skills: list[str]
     summary: str
     location: str
+    url: str
 
 
 class Education(BaseModel):

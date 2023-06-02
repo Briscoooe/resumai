@@ -121,6 +121,7 @@ my_experiences = [
     Experience(
         company="One Purpose",
         title="Co-Founder and Lead Engineer",
+        url="https://onepurpose.io",
         start_date=date(2021, 11, 1),
         end_date=date(2023, 4, 1),
         skills=[
@@ -139,6 +140,7 @@ my_experiences = [
     ),
     Experience(
         company="Mello - DeFi onboarding made easy",
+        url="https://mello-dapp.vercel.app/",
         title="Co-Founder and Lead Engineer",
         start_date=date(2021, 11, 1),
         end_date=date(2022, 6, 1),
@@ -153,6 +155,7 @@ my_experiences = [
     ),
     Experience(
         company="On The Stage",
+        url="https://www.onthestage.com/",
         title="Lead Engineer",
         start_date=date(2020, 12, 1),
         end_date=date(2021, 11, 1),
@@ -178,6 +181,7 @@ my_experiences = [
     Experience(
         company="On The Stage",
         title="Software Engineer",
+        url="https://www.onthestage.com/",
         start_date=date(2017, 11, 1),
         end_date=date(2020, 12, 1),
         skills=[
@@ -207,6 +211,7 @@ my_experiences = [
     Experience(
         company="Verizon Connect",
         title="Software Engineer",
+        url="https://www.verizonconnect.com/",
         start_date=date(2016, 11, 1),
         end_date=date(2017, 10, 1),
         skills=[
