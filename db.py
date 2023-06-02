@@ -29,6 +29,8 @@ recent_technology_categories = [
             "Django",
             "Django Rest Framework",
             "Python",
+            "LangChain",
+            "FastAPI",
             "Flask",
             "PyTest",
             "Celery",
@@ -59,6 +61,12 @@ recent_technology_categories = [
 ]
 
 my_personal_projects = [
+    PersonalProject(
+        title="ResumAI",
+        description="A lightweight web app that allows you to chat about my resume with a bot using OpenAI GPT 3.5. It comprises a static frontend built using Preact and Tailwind, a backend API built using FastAPI, and a custom OpenAI GPT 3.5 prompt trained on my resume.",
+        link="https://github.com/briscoooe/resumai",
+        technologies=["Preact", "Tailwind", "Langchain", "FastAPI"],
+    ),
     PersonalProject(
         title="Irish Rail REST API",
         description="An unofficial REST API for the Irish Rail Realtime API. The current API returns XML across a series of inconsistently named SOAP endpoints and it's not very user-friendly. I used Flask to make a self-documenting OpenAPI REST API around it, making it easier to interact with and get a view of how the different endpoints relate to each other.",
