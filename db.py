@@ -55,7 +55,7 @@ recent_technology_categories = [
     ),
     RecentTechnologyCategory(
         title="Third-party services",
-        technologies=["Sentry", "LogRocket", "NewRelic", "ElasticSearch"],
+        technologies=["OpenAI", "Sentry", "LogRocket", "NewRelic", "ElasticSearch"],
     ),
     RecentTechnologyCategory(title="Other", technologies=["Git", "Linux"]),
 ]
@@ -65,7 +65,7 @@ my_personal_projects = [
         title="ResumAI",
         description="A lightweight web app that allows you to chat about my resume with a bot using OpenAI GPT 3.5. It comprises a static frontend built using Preact and Tailwind, a backend API built using FastAPI, and a custom OpenAI GPT 3.5 prompt trained on my resume.",
         link="https://github.com/briscoooe/resumai",
-        technologies=["Preact", "Tailwind", "Langchain", "FastAPI"],
+        technologies=["Preact", "Tailwind", "Langchain", "FastAPI", "OpenAI"],
     ),
     PersonalProject(
         title="Irish Rail REST API",
