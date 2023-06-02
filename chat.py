@@ -24,6 +24,7 @@ language_map = {
     "pt": "Portuguese",
 }
 
+
 async def send_message(message: str, persona: str, language: str) -> AsyncIterable[str]:
     callback = AsyncIteratorCallbackHandler()
     model = ChatOpenAI(
