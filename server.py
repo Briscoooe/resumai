@@ -10,6 +10,7 @@ from schemas import (
     Education,
     OpenSourceContribution,
     RecentTechnologyCategory,
+    PersonalProject,
 )
 
 app = FastAPI()
@@ -57,6 +58,15 @@ def get_my_open_source():
 )
 def get_my_technologies():
     return my_resume.recent_technology_categories
+
+
+@app.get(
+    "/resume/projects",
+    response_model=list[PersonalProject],
+    summary="Get my personal projects",
+)
+def get_my_projects():
+    return my_resume.personal_projects
 
 
 @app.get("/chat", summary="Chat about my resume with a magic AI bot")
