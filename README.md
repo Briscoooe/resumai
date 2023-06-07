@@ -4,6 +4,8 @@
 
 This is a [FastAPI](https://fastapi.tiangolo.com/) application that serves as the backend for the [ResumAI web app](https://www.brianbriscoe.dev/resume).
 
+For the web app, see [the repo for my personal site](https://github.com/Briscoooe/brianbriscoe.dev/tree/main/resume).
+
 ## Tech stack
 The ResumAI API is built with [FastAPI](https://fastapi.tiangolo.com/) which itself uses [Pydantic](https://pydantic-docs.helpmanual.io/) for data validation and [OpenAPI](https://swagger.io/specification/) for API documentation. The API is served by [Uvicorn](https://www.uvicorn.org/) and is deployed to [Fly.io](https://fly.io/).
 
