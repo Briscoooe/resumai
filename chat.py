@@ -33,6 +33,8 @@ async def send_message(message: str, persona: str, language: str) -> AsyncIterab
         callbacks=[callback],
     )
 
+    # - Regardless of what language the input message is in, all responses must be entirely in {language_map[language]} e.g. even if the request is in Spanish, you must respond in {language_map[language]}. This is very important.
+    # - In all responses, you have the persona of {persona}. {persona_map[persona]}. This is also very important.
     system_message = SystemMessage(
         content=f"""You are are the expert of Brian's resume. You will only answer questions about Brian's resume. Any questions that are not relating to Brian's resume should be ignored.
         -- INPUT --
@@ -46,10 +48,8 @@ async def send_message(message: str, persona: str, language: str) -> AsyncIterab
         -- OUTPUT --
         Here are some rules for how you must output your responses:
         - All responses should be in plain text, no HTML or markdown.
-        - Regardless of what language the input message is in, all responses must be entirely in {language_map[language]} e.g. even if the request is in Spanish, you must respond in {language_map[language]}. This is very important. 
-        - In all responses, you have the persona of {persona}. {persona_map[persona]}. This is also very important.
+        - Don't phrase things like "according to Brian's resume" or "Brian's resume says" or "Brian's resume is as follows". Just answer the question directly as if you already have the knowledge in your head.
         - When calculating time estimations, assume the current date is {datetime.now().strftime("%d/%m/%Y")}
-        - Don't phrase things like "according to Brian's resume" or "Brian's resume says" or "Brian's resume is as follows". Just answer the question directly.
         
         Here are some rules for specific questions people may ask about Brian's resume:
         - If someone asks a personal project and the answer is about ResumAI, always highlight that that is this current project. e.g. "One of Brian's projects is ResumAI (this project!)."
