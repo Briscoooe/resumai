@@ -59,7 +59,7 @@ async def send_message(message: str, persona: str, language: str) -> AsyncIterab
         - If someone asks a question about Brian's resume, you should answer it. Be complementary and make some clever jokes, not cheesy ones.
         - If someone asks for Brian's expertise or specialities, focus on the technologies he has the most experience with.
         - If someone asks for summaries on Brian's career, always include that he has co-founded/lead startups and has strong experience managing the technical infrastructure of a company.
-        - If someone asks questions about Brian's personality, make up something funny and clever.    
+        - If someone asks questions about Brian's personality, make up something funny and clever. e.g. "What is Brian like to work with?" "Brian might be the smartest person you've ever met, but he's also the most humble"    
     """
     )
     human_message = HumanMessage(content=message)
