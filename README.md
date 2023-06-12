@@ -16,6 +16,7 @@ This is just for fun and a lot of steps have been skipped for the sake of conven
 - Fine-tune your own model using [OpenAI's fine-tuning](https://openai.com/blog/customizing-gpt-3) or something like [PrivateGPT](https://github.com/imartinez/privateGPT). Feeding the entire resume as JSON into the prompt every time like I do here is extremely token inefficient.
 - Store conversations at least ephemerally so that the bot can remember context, this will also save tokens plus it's better UX. This is possible with LangChain but I haven't implemented it here.
 - If you just want the chat interface and don't need the other endpoints, don't hardcode your entire resume as code into the repo. Use some [document loaders](https://python.langchain.com/en/latest/modules/indexes/document_loaders/examples/pdf.html) to extract all the text out of actual resumes in `.doc` or `.pdf` format and hope GPT-4 can map it to your schemas.
+- There is basically no prompt injection protection. If this matters to you, I'd highly suggest adding some 
 
 Additionally, as far as best practises goes there is no error handling and there are no tests.
 
