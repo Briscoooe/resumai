@@ -91,6 +91,12 @@ my_personal_projects = [
         link="",
         technologies=["Python", "Tweepy", "Printful API"],
     ),
+    PersonalProject(
+        title="fastify-evervault",
+        description="Fastify plugin for integrating the Evervault Node.js SDK. This was an exercise in exploring the fastify ecosystem, NPM package publishing and the Evervault SDK.",
+        link="https://github.com/Briscoooe/fastify-evervault",
+        technologies=["Node.js", "Fastify"],
+    )
 ]
 
 my_open_source_contributions = [
